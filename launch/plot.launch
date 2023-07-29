@@ -1,0 +1,17 @@
+<launch>
+  <node name="modbus_node_x" pkg="modbus_pkg" type="modbus_node" output="screen">
+    <param name="device" value="/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT2N05OG-if00-port0"/>
+    <param name="server_id" value="2"/>
+    <param name="out_topic_name" value="/strain_x"/>
+  </node>
+
+  <node name="modbus_node_z" pkg="modbus_pkg" type="modbus_node" output="screen">
+    <param name="device" value="/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AQ045QY0-if00-port0"/>
+    <param name="server_id" value="1"/>
+    <param name="out_topic_name" value="/strain_z"/>
+  </node>
+
+  <include file="$(find leptrino_force_torque)/launch/leptrino.launch">
+  </include>
+
+</launch>
